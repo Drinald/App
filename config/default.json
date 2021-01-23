@@ -1,0 +1,4 @@
+{
+    "mongodbURI": "mongodb+srv://Drinald:Drini201614!@cluster0.ob6jo.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "secret_jwt_code"
+}

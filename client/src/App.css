@@ -1,0 +1,203 @@
+/* General class options */
+.darkgrey {
+    background-color: #242526;
+}
+.lightgrey{
+    background-color: #3a3b3c;
+}
+.whitegrey{
+    color: #d5dbdb;
+}
+
+/* DOCUMENT WIDE OPTIONS*/
+html, body{
+    height:100vh;
+    width:100%;
+    padding:0;
+    margin:0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+/* THE MAIN BODY */
+.App {
+    height:100vh;
+    width:100%;
+    display: grid;
+    grid-template-rows: 7rem 1fr 8rem;
+}
+
+/* The HEADER*/
+
+.navBar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 2rem;
+}
+@media screen and (max-width:800px){
+    .navBar{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 2rem;
+    }
+
+}
+.navBar h3{
+    display:flex;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    color: #010101
+}
+.box {
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.box li a {
+    text-decoration: none !important;
+    color: #efefef
+}
+.box li a:hover {
+    color:orange;
+}
+li {
+    display:flex;
+    flex:stretch;
+}
+
+/* THE FOOTER */
+.footer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+/* THE HOMESCREEN */
+
+.container {
+    background-color: #b3b3b3;
+    padding: 1rem;
+    display:grid;
+    grid-template-rows: 20rem 1fr;
+    max-width: 60rem;
+}
+.carousel {
+    align-self: center;
+    justify-self: center;
+    border:solid;
+    height: 20rem;
+    width:20rem;
+}
+/* PRODUCT LISTING */
+.publish {
+    padding:1rem;
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    align-items: center;
+    width:inherit;
+}
+.publish div { 
+    list-style-type: none !important;
+    background-color: #dcdcdc;
+    border-radius: 5px;
+    padding: 0 1rem 0 1rem;
+    margin:1rem;
+    width:100%;
+    display:grid;
+    grid-template-rows: 3rem 6rem 2rem;
+    align-items: center;
+    justify-content: stretch;
+}
+.publish div span {
+    background-color: #DCDCDC;
+    display:flex;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.publish div p{
+    height:100%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: stretch;
+}
+.publish div h5{
+    display:flex;
+    flex-basis: auto;
+    align-items: center;
+    justify-content: flex-end;
+}
+/* REGISTRATION FORM */
+.form {
+    margin:5rem auto auto auto;
+    border-radius: 5px;
+    background-color: #d6d6d6;
+    display: grid;
+    grid-template-rows: 5rem 5rem 5rem 5rem;
+    width:30rem;
+    height:30rem;
+    justify-content: center;
+}
+.form input {
+    margin:1rem;
+}
+.form label {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+.form label a {
+   margin-left: 5px;
+}
+.form label input {
+    width:20px;
+    height:20px;
+}
+/* PUBLISH ITEM FORM */
+.postContainer {
+    margin:1rem;
+    width:auto;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.item-a {
+    grid-area: title;
+}
+.item-b {
+    grid-area: price;
+}
+.item-c {  
+    grid-area: textarea;
+}
+.item-d{
+    grid-area: submit;
+}
+.post {
+    background-color: #d6d6d6;
+    display:grid;
+    grid-template-columns: 10rem 10rem;
+    grid-template-rows: 4rem 20rem 4rem;
+    grid-template-areas:
+    "title       price"
+    "textarea textarea"
+    "submit .         ";
+}
+
+.post > * {
+    margin:1rem;
+}
+.post textarea {
+    resize: none;
+}
