@@ -60,5 +60,36 @@ router.post('/', (req, res) => {
         }).catch(err => console.log(err))
 })
 
+//Get route for the login user
+router.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    User.findOne({ email })
+        .then(user => {
+            if (!user) return res.status(400).json({ msg: "User doesn't exist!" })
+
+            bcrypt.compare(password, user.password)
+                .then(isMatched => {
+                    if (!isMatched) return res.status(400).json({ msg: "Wrong password" })
+
+                    jwt.sign(
+                        { id: user.id }, config.get('jwtSecret'), (err, token) => {
+                            if (err) throw err;
+
+                            res.json({
+                                token,
+                                user: {
+                                    id: user.id,
+                                    name: user.name,
+                                    email: user.email
+                                }
+                            })
+                        }
+                    )
+                })
+        })
+        .catch(err => console.log(`Error: ${err}`))
+
+})
+
 
 module.exports = router;

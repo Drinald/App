@@ -2,11 +2,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Register() {
+
+    //Registration data
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirm, setConfirm] = useState('')
-    //The onchange event storing each value in the state;
+    const [confirm, setConfirm] = useState('');
+
+    //Login data
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+
+    //Registration: The onchange event storing each value in the state;
     const onChange = (e) => {
         e.preventDefault()
         switch (e.target.id) {
@@ -21,6 +28,12 @@ function Register() {
                 break;
             case 'confirm':
                 setConfirm(e.target.value)
+                break;
+            case 'loginEmail':
+                setLoginEmail(e.target.value)
+                break;
+            case 'loginPassword':
+                setLoginPassword(e.target.value)
                 break;
             default:
                 return;
@@ -45,10 +58,27 @@ function Register() {
         document.getElementById('checkbox').checked = false;
     }
 
+    // Login: Checking whether the user exists or not so that we can login
+    const login = (e) => {
+        e.preventDefault()
+
+        const loginUser = {
+            "email": loginEmail,
+            "password": loginPassword
+        }
+
+
+        axios.post('http://localhost:5000/api/user/login', loginUser)
+            .then(user => {
+                console.log(user.data.token)
+            })
+            .catch(err => console.log(`Error: ${err}`))
+    }
+
 
     return (
         <div>
-            <form className="form" onSubmit={onSubmit}>
+            <form id="register" className="form" onSubmit={onSubmit}>
                 <input
                     id="name"
                     type="text"
@@ -88,9 +118,32 @@ function Register() {
                         required
                     />I lexova dhe i pranoj te gjitha <a href="#">Rregullat dhe Kushtet</a></label>
                 <input
-                    classname="btn btn-primary"
+                    className="btn btn-primary"
                     type="submit"
                     value="Rregjistrohu"
+                />
+            </form>
+            <form id="login" onSubmit={login}>
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Email"
+                    value={loginEmail}
+                    onChange={onChange}
+                    required
+                />
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                    value={loginPassword}
+                    onChange={onChange}
+                    required
+                />
+                <input
+                    className="btn btn-danger"
+                    type="submit"
+                    value="Log In"
                 />
             </form>
         </div>
